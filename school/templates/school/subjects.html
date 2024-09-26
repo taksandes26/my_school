@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Subjects{% endblock %}
+{% block content %}
+<h1>Subject List</h1>
+<ul>
+  {% for subject in subjects %}
+    <li>{{ subject.name }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}
