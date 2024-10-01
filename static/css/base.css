@@ -1,45 +1,82 @@
-/* styles.css */
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
+/* Reset some default styles */
+body, h1, h2, p {
     margin: 0;
     padding: 0;
 }
 
-.navbar {
-    background: #333;
-    color: #fff;
-    padding: 15px;
+/* Basic body styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4; /* Light background */
+    color: #333; /* Dark text */
+}
+
+/* Header styling */
+header {
+    background: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 10px 20px;
     text-align: center;
 }
 
-.navbar a {
-    color: #fff;
-    margin: 0 15px;
-    text-decoration: none;
+/* Navigation styles */
+nav {
+    margin: 20px 0;
 }
 
-.container {
+nav ul {
+    list-style-type: none; /* Remove bullets */
+    padding: 0;
+}
+
+nav ul li {
+    display: inline; /* Horizontal list */
+    margin-right: 15px;
+}
+
+nav ul li a {
+    color: white; /* White links */
+    text-decoration: none; /* Remove underline */
+}
+
+nav ul li a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Main content styling */
+main {
     padding: 20px;
 }
 
-.student-card {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    margin: 10px;
-    width: 200px;
+/* Form styles */
+form {
+    background: white; /* White background for form */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+form button {
+    background: #4CAF50; /* Green button */
+    color: white; /* White text */
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer; /* Pointer cursor */
+    border-radius: 5px; /* Rounded corners */
+}
+
+form button:hover {
+    background: #45a049; /* Darker green on hover */
+}
+
+/* Footer styles */
+footer {
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: inline-block;
-}
-
-.student-card img {
-    border-radius: 50%;
-    margin-bottom: 10px;
-}
-
-.student-card h3 {
-    margin: 5px 0;
+    padding: 10px 0;
+    background: #4CAF50; /* Green background */
+    color: white; /* White text */
+    position: relative; /* Position footer */
+    bottom: 0; /* Stick to bottom */
+    width: 100%; /* Full width */
 }

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Update Student - {{ student.name }}</h2>  <!-- Page heading with student's name -->
+
+    <table>
+        <tr>
+            <th>Roll Number</th>
+            <td>{{ student.roll_no }}</td>  <!-- Display Roll Number -->
+        </tr>
+        <tr>
+            <th>Class</th>
+            <td>{{ student.class_name }}</td>  <!-- Display Class Name -->
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ student.email }}</td>  <!-- Display Email -->
+        </tr>
+        <tr>
+            <th>Status</th>
+            <td>{{ student.status }}</td>  <!-- Display Status -->
+        </tr>
+    </table>
+
+    <h3>Edit Student Details</h3>
+    <form method="post" action="{% url 'student_update' student.pk %}">
+        {% csrf_token %}
+        {{ user_form.as_p }}  <!-- Render the form with all the fields in paragraph format -->
+        <button type="submit">Save Changes</button>
+    </form>
+
+    <br>
+
+    <!-- Link to go back to the student list -->
+    <a href="{% url 'student_list' %}">Back to Student List</a>
+{% endblock %}

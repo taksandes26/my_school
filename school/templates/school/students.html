@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
-{% block title %}Students{% endblock %}
+
+{% block title %}Create Student{% endblock %}
+
 {% block content %}
-<h1>Student List</h1>
-<ul>
-  {% for student in students %}
-    <li>{{ student.name }} - {{ student.roll_no }} - {{ student.class }}</li>
-  {% endfor %}
-</ul>
+<h1>Create Student</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    <button type="submit">Create Student</button>
+</form>
+<a href="{% url 'student_create' %}">Add Another Student</a>
 {% endblock %}
