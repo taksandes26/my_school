@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Teachers{% endblock %}
+
+{% block content %}
+<h1>Teachers</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Subject</th>
+            <th>Action</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for teacher in teachers %}
+        <tr>
+            <td>{{ teacher.name }}</td>
+            <td>{{ teacher.subject }}</td>
+
+            <td>
+                <a href="{% url 'teacher_detail' teacher.pk %}">View Details</a>
+            </td>
+            <td>
+                <a href="{% url 'teacher_update' teacher.pk %}">Update</a>
+            </td>
+            <td>
+                <form method="post" action="{% url 'teacher_delete' teacher.pk %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No teachers found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<p><a href="{% url 'teacher_create' %}">Add a New Teacher</a></p>
+{% endblock %}

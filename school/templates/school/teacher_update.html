@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Update Teacher - {{ teacher.name }}</h2>  <!-- Page heading with teacher's name -->
+
+    <h3>Edit Teacher Details</h3>
+    <!-- Make sure the form is rendered correctly -->
+    <form method="post" action="{% url 'teacher_update' teacher.pk %}">
+        {% csrf_token %}
+        {{ teacher_form.as_p }}
+        <button type="submit">Save Changes</button>
+    </form>
+
+    <br>
+
+    <!-- Link to go back to the teacher list -->
+    <a href="{% url 'teachers_list' %}">Back to Teacher List</a>
+{% endblock %}

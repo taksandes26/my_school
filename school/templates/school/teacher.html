@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title%}<h2>Create Teacher</h2>{% endblock %}
+{% block content %}
+<h1> Create Teacher</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ teacher_form.as_p }}
+    <button type="submit">Create Teacher</button>
+</form>
+<a href="{% url 'teacher_create' %}">Add New Teacher</a> <!-- Link to create a new teacher -->
+{% endblock %}
+
+
+
+
