@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Update Subject - {{ subject.name }}</h2>
+
+    <!-- Display the form with fields to edit -->
+    <form method="post" action="{% url 'subject_update' subject.pk %}">
+        {% csrf_token %}  <!-- Cross Site Request Forgery token for security -->
+        {{ subject_form.as_p }}  <!-- Render the form fields with <p> tags for styling -->
+
+        <button type="submit">Save Changes</button>
+    </form>
+
+    <br>
+    <!-- Link to go back to the subject list -->
+    <a href="{% url 'subject_list' %}">Back to Subject List</a>
+{% endblock %}

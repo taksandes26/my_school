@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Subject Created{% endblock %}
+
+{% block content %}
+<h1>Subject Created Successfully!</h1>
+<p>The subject <strong>{{ new_subject.name }}</strong> has been created successfully.</p>
+<a href="{% url 'subject_create' %}">Add Another Subject</a>
+{% endblock %}

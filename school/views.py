@@ -133,7 +133,7 @@ class TeacherDeleteView(View):
 class SubjectCreateView(View):
     form_class = SubjectForm
     initial_template = 'school/subject.html'
-    template_name = 'school/subject_create.html'
+    template_name = 'school/subject_created.html'
 
     def get(self, request):
         subject_form = self.form_class
@@ -142,10 +142,54 @@ class SubjectCreateView(View):
     def post(self, request):
         subject_form = self.form_class(request.POST)
         if subject_form.is_valid():
-            subject_form.save()
-            return render(request, self.template_name, {'subject_form': subject_form})
+            new_subject = subject_form.save()
+            return render(request, self.template_name, {'new_subject': new_subject})
         else:
             return render(request, self.initial_template, {'subject_form': subject_form})
+
+
+class SubjectListView(View):
+    def get(self, request):
+        subjects = Subject.objects.all()
+        return render(request, 'school/subject_list.html', {'subjects': subjects})
+
+
+class SubjectDetailView(View):
+    def get(self, request, pk):
+        subject = get_object_or_404(Subject, pk=pk)
+        return render(request, 'school/subject_detail.html', {'subject': subject})
+
+
+class SubjectUpdateView(View):
+    form_class = SubjectForm
+    template_name = 'school/subject_update.html'
+
+    def get(self, request, pk):
+        subject = get_object_or_404(Subject, pk=pk)
+        subject_form = self.form_class(instance=subject)
+        return render(request, self.template_name, {'subject_form': subject_form, 'subject': subject})
+
+    def post(self, request, pk):
+        subject = get_object_or_404(Subject, pk=pk)
+        subject_form = self.form_class(data=request.POST, instance=subject)
+        if subject_form.is_valid():
+            subject_form.save()
+            return redirect('subject_list')
+        else:
+            subject_form = self.form_class
+            return render(request, self.template_name, {'subject_form': subject_form, 'subject': subject})
+
+
+class SubjectDeleteView(View):
+    def get(self, request, pk):
+        subject = get_object_or_404(Subject, pk=pk)
+        return render(request, 'school/subject_delete.html', {'subject': subject})
+
+    def post(self, request, pk):
+        subject = get_object_or_404(Subject, pk=pk)
+        subject.delete()
+        return redirect('subject_list')
+
 #
 #
 # def about_us(request):

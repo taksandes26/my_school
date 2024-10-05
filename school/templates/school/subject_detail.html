@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Subject Details - {{ subject.name }}</h2>  <!-- Display the subject name as the main heading -->
+
+    <table>
+        <tr>
+            <th>Subject Name</th>
+            <td>{{ subject.name }}</td>  <!-- Show the subject name -->
+        </tr>
+        <tr>
+            <th>Teacher</th>
+            <td>{{ subject.teacher.name }}</td>  <!-- Display the name of the associated teacher -->
+        </tr>
+        <tr>
+            <th>Teacher's Specialization</th>
+            <td>{{ subject.teacher.subject }}</td>  <!-- Show the teacher's specialization -->
+        </tr>
+    </table>
+
+    <br>
+    <!-- Edit button to update the subject details -->
+    <a href="{% url 'subject_update' subject.pk %}" class="btn btn-primary">Edit Subject</a>
+
+    <br><br>
+    <!-- Link to go back to the subject list -->
+    <a href="{% url 'subject_list' %}">Back to Subject List</a>
+{% endblock %}
